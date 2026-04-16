@@ -14,6 +14,15 @@ import UrlEncoder from "@/tools/url-encoder";
 import PasswordGenerator from "@/tools/password-generator";
 import BoxShadowGenerator from "@/tools/box-shadow";
 import ColorPicker from "@/tools/color-picker";
+import TextCaseConverter from "@/tools/text-case-converter";
+import JsonConverter from "@/tools/json-converter";
+import HtmlEntities from "@/tools/html-entities";
+import ImageToBase64 from "@/tools/image-to-base64";
+import QrCodeGenerator from "@/tools/qr-code";
+import NumberBaseConverter from "@/tools/number-base";
+import PdfMerge from "@/tools/pdf-merge";
+import PdfSplit from "@/tools/pdf-split";
+import PdfToImage from "@/tools/pdf-to-image";
 
 export const tools: ToolDefinition[] = [
   {
@@ -150,6 +159,87 @@ export const tools: ToolDefinition[] = [
     category: "Design",
     keywords: ["color", "picker", "palette", "select", "visual", "swatch"],
     component: ColorPicker,
+  },
+  {
+    name: "Text Case Converter",
+    slug: "text-case-converter",
+    description:
+      "Convert text between camelCase, snake_case, kebab-case, and more.",
+    category: "Text",
+    keywords: ["case", "camel", "snake", "kebab", "pascal", "upper", "lower", "title"],
+    component: TextCaseConverter,
+  },
+  {
+    name: "JSON to YAML/CSV",
+    slug: "json-converter",
+    description:
+      "Convert JSON data to YAML or CSV format.",
+    category: "Converters",
+    keywords: ["json", "yaml", "csv", "convert", "transform", "export"],
+    component: JsonConverter,
+  },
+  {
+    name: "HTML Entity Encoder",
+    slug: "html-entities",
+    description:
+      "Encode and decode HTML entities for safe web content.",
+    category: "Text",
+    keywords: ["html", "entity", "encode", "decode", "escape", "amp", "lt", "gt"],
+    component: HtmlEntities,
+  },
+  {
+    name: "Image to Base64",
+    slug: "image-to-base64",
+    description:
+      "Convert images to Base64 data URIs with preview.",
+    category: "Converters",
+    keywords: ["image", "base64", "data uri", "png", "jpg", "convert", "photo"],
+    component: ImageToBase64,
+  },
+  {
+    name: "QR Code Generator",
+    slug: "qr-code",
+    description:
+      "Generate QR codes from text or URLs with custom colors and download.",
+    category: "Generators",
+    keywords: ["qr", "qrcode", "barcode", "generate", "scan", "url"],
+    component: QrCodeGenerator,
+  },
+  {
+    name: "Number Base Converter",
+    slug: "number-base",
+    description:
+      "Convert numbers between binary, octal, decimal, and hexadecimal.",
+    category: "Converters",
+    keywords: ["binary", "octal", "decimal", "hex", "base", "convert", "number"],
+    component: NumberBaseConverter,
+  },
+  {
+    name: "PDF Merge",
+    slug: "pdf-merge",
+    description:
+      "Combine multiple PDF files into one \u2014 100% client-side.",
+    category: "Converters",
+    keywords: ["pdf", "merge", "combine", "join", "document"],
+    component: PdfMerge,
+  },
+  {
+    name: "PDF Split",
+    slug: "pdf-split",
+    description:
+      "Extract specific pages from a PDF into a new file.",
+    category: "Converters",
+    keywords: ["pdf", "split", "extract", "pages", "document"],
+    component: PdfSplit,
+  },
+  {
+    name: "PDF to Image",
+    slug: "pdf-to-image",
+    description:
+      "Render PDF pages as PNG images for download.",
+    category: "Converters",
+    keywords: ["pdf", "image", "png", "render", "convert", "screenshot"],
+    component: PdfToImage,
   },
 ];
 
