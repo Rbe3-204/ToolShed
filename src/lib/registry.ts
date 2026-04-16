@@ -10,6 +10,10 @@ import MarkdownPreview from "@/tools/markdown-preview";
 import JwtDecoder from "@/tools/jwt-decoder";
 import TimestampConverter from "@/tools/timestamp-converter";
 import CssMinifier from "@/tools/css-minifier";
+import DiffChecker from "@/tools/diff-checker";
+import UrlEncoder from "@/tools/url-encoder";
+import PasswordGenerator from "@/tools/password-generator";
+import BoxShadowGenerator from "@/tools/box-shadow";
 
 export const tools: ToolDefinition[] = [
   {
@@ -110,6 +114,42 @@ export const tools: ToolDefinition[] = [
     category: "Developer",
     keywords: ["css", "minify", "beautify", "compress", "format", "stylesheet"],
     component: CssMinifier,
+  },
+  {
+    name: "Diff Checker",
+    slug: "diff-checker",
+    description:
+      "Compare two texts side-by-side and highlight differences.",
+    category: "Text",
+    keywords: ["diff", "compare", "difference", "text", "merge", "changes"],
+    component: DiffChecker,
+  },
+  {
+    name: "URL Encoder/Decoder",
+    slug: "url-encoder",
+    description:
+      "Encode and decode URL components and full URIs.",
+    category: "Converters",
+    keywords: ["url", "encode", "decode", "uri", "percent", "query string"],
+    component: UrlEncoder,
+  },
+  {
+    name: "Password Generator",
+    slug: "password-generator",
+    description:
+      "Generate secure passwords with custom length and character options.",
+    category: "Generators",
+    keywords: ["password", "generate", "secure", "random", "strong"],
+    component: PasswordGenerator,
+  },
+  {
+    name: "Box Shadow Generator",
+    slug: "box-shadow",
+    description:
+      "Visual CSS box-shadow builder with live preview and copy.",
+    category: "Design",
+    keywords: ["box-shadow", "css", "shadow", "generator", "visual", "builder"],
+    component: BoxShadowGenerator,
   },
 ];
 
