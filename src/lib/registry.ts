@@ -23,6 +23,7 @@ import NumberBaseConverter from "@/tools/number-base";
 import PdfMerge from "@/tools/pdf-merge";
 import PdfSplit from "@/tools/pdf-split";
 import PdfToImage from "@/tools/pdf-to-image";
+import WordToPdf from "@/tools/word-to-pdf";
 
 export const tools: ToolDefinition[] = [
   {
@@ -240,6 +241,15 @@ export const tools: ToolDefinition[] = [
     category: "Converters",
     keywords: ["pdf", "image", "png", "render", "convert", "screenshot"],
     component: PdfToImage,
+  },
+  {
+    name: "Word to PDF",
+    slug: "word-to-pdf",
+    description:
+      "Convert Word documents (.docx) to PDF entirely in your browser.",
+    category: "Converters",
+    keywords: ["word", "docx", "pdf", "convert", "document", "office"],
+    component: WordToPdf,
   },
 ];
 
