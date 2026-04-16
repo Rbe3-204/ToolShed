@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllSlugs } from "@/lib/registry";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://toolshed.dev";
+  const baseUrl = "https://toolshed-pi.vercel.app";
 
   const toolPages = getAllSlugs().map((slug) => ({
     url: `${baseUrl}/tools/${slug}`,
