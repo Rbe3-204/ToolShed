@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getToolBySlug, getAllSlugs, getRelatedTools } from "@/lib/registry";
 import RelatedTools from "@/components/related-tools";
-import CarbonAd from "@/components/carbon-ad";
+import AdUnit from "@/components/ad-unit";
 
 interface Props {
   params: { slug: string };
@@ -49,7 +49,7 @@ export default function ToolPage({ params }: Props) {
         </div>
         <aside className="w-64 shrink-0 hidden lg:block">
           <RelatedTools tools={related} />
-          <CarbonAd />
+          <AdUnit />
         </aside>
       </div>
     </div>
