@@ -5,7 +5,6 @@ import UuidGenerator from "@/tools/uuid-generator";
 import HashGenerator from "@/tools/hash-generator";
 import RegexTester from "@/tools/regex-tester";
 import LoremIpsumGenerator from "@/tools/lorem-ipsum";
-import ColorConverter from "@/tools/color-converter";
 import MarkdownPreview from "@/tools/markdown-preview";
 import JwtDecoder from "@/tools/jwt-decoder";
 import TimestampConverter from "@/tools/timestamp-converter";
@@ -14,6 +13,7 @@ import DiffChecker from "@/tools/diff-checker";
 import UrlEncoder from "@/tools/url-encoder";
 import PasswordGenerator from "@/tools/password-generator";
 import BoxShadowGenerator from "@/tools/box-shadow";
+import ColorPicker from "@/tools/color-picker";
 
 export const tools: ToolDefinition[] = [
   {
@@ -69,15 +69,6 @@ export const tools: ToolDefinition[] = [
     category: "Generators",
     keywords: ["lorem", "ipsum", "placeholder", "text", "dummy", "filler"],
     component: LoremIpsumGenerator,
-  },
-  {
-    name: "Color Converter",
-    slug: "color-converter",
-    description:
-      "Convert colors between HEX, RGB, and HSL with a live preview swatch.",
-    category: "Design",
-    keywords: ["hex", "rgb", "hsl", "color", "picker", "convert", "swatch"],
-    component: ColorConverter,
   },
   {
     name: "Markdown Preview",
@@ -150,6 +141,15 @@ export const tools: ToolDefinition[] = [
     category: "Design",
     keywords: ["box-shadow", "css", "shadow", "generator", "visual", "builder"],
     component: BoxShadowGenerator,
+  },
+  {
+    name: "Color Picker",
+    slug: "color-picker",
+    description:
+      "Custom visual color picker with palette saving and format export.",
+    category: "Design",
+    keywords: ["color", "picker", "palette", "select", "visual", "swatch"],
+    component: ColorPicker,
   },
 ];
 
