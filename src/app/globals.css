@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background-color: rgb(59 130 246 / 0.4);
+  color: white;
+}
+
+/* Dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(3 7 18);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(55 65 81);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(75 85 99);
 }
