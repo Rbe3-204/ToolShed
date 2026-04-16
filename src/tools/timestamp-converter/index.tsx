@@ -65,14 +65,14 @@ export default function TimestampConverter() {
   return (
     <div className="space-y-4">
       {/* Current timestamp */}
-      <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 flex items-center justify-between">
+      <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 flex items-center justify-between">
         <div>
-          <span className="text-sm text-gray-400">Current Unix Timestamp: </span>
-          <span className="font-mono text-lg text-gray-100">{currentUnix}</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">Current Unix Timestamp: </span>
+          <span className="font-mono text-lg text-gray-900 dark:text-gray-100">{currentUnix}</span>
         </div>
         <button
           onClick={copyCurrent}
-          className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-1.5 text-sm transition-colors"
+          className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-1.5 text-sm transition-colors"
         >
           {copiedCurrent ? "Copied!" : "Copy"}
         </button>
@@ -104,7 +104,7 @@ export default function TimestampConverter() {
 
       {/* Input */}
       <div>
-        <label className="block text-sm text-gray-400 mb-1">
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">
           {mode === "toDate" ? "Unix Timestamp" : "Date String"}
         </label>
         {mode === "toDate" ? (
@@ -113,7 +113,7 @@ export default function TimestampConverter() {
             value={unixInput}
             onChange={(e) => setUnixInput(e.target.value)}
             placeholder="e.g. 1713225600"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         ) : (
           <input
@@ -121,14 +121,14 @@ export default function TimestampConverter() {
             value={dateInput}
             onChange={(e) => setDateInput(e.target.value)}
             placeholder="e.g. 2024-04-16 00:00:00 or Apr 16 2024"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         )}
       </div>
 
       {/* Results */}
       {mode === "toDate" && dateResult && !isNaN(dateResult.getTime()) && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
           {[
             { label: "UTC", value: dateResult.toUTCString() },
             { label: "Local", value: dateResult.toString() },
@@ -138,13 +138,13 @@ export default function TimestampConverter() {
             <div
               key={label}
               className={`flex items-center gap-3 px-4 py-2.5 ${
-                i !== arr.length - 1 ? "border-b border-gray-800" : ""
+                i !== arr.length - 1 ? "border-b border-gray-200 dark:border-gray-800" : ""
               }`}
             >
-              <span className="text-sm text-gray-400 w-20 shrink-0 font-semibold">
+              <span className="text-sm text-gray-500 dark:text-gray-400 w-20 shrink-0 font-semibold">
                 {label}
               </span>
-              <code className="font-mono text-sm text-gray-100 select-all">
+              <code className="font-mono text-sm text-gray-900 dark:text-gray-100 select-all">
                 {value}
               </code>
             </div>
@@ -159,9 +159,9 @@ export default function TimestampConverter() {
       )}
 
       {mode === "toUnix" && unixResult !== null && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3">
-          <span className="text-sm text-gray-400">Unix Timestamp: </span>
-          <code className="font-mono text-lg text-gray-100 select-all">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3">
+          <span className="text-sm text-gray-500 dark:text-gray-400">Unix Timestamp: </span>
+          <code className="font-mono text-lg text-gray-900 dark:text-gray-100 select-all">
             {unixResult}
           </code>
         </div>

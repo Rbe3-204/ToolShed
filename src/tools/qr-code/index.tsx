@@ -53,32 +53,32 @@ export default function QrCodeGenerator() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm text-gray-400 mb-1">Text or URL</label>
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Text or URL</label>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Enter text or URL to encode..."
-          className="w-full h-24 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full h-24 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           spellCheck={false}
         />
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-400">Size:</label>
+          <label className="text-sm text-gray-500 dark:text-gray-400">Size:</label>
           <input
             type="range" min={128} max={512} step={32} value={size}
             onChange={(e) => setSize(parseInt(e.target.value))}
             className="w-32 accent-blue-600"
           />
-          <span className="text-sm text-gray-100 font-mono w-12">{size}px</span>
+          <span className="text-sm text-gray-900 dark:text-gray-100 font-mono w-12">{size}px</span>
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-400">FG:</label>
+          <label className="text-sm text-gray-500 dark:text-gray-400">FG:</label>
           <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="w-7 h-7 rounded border border-gray-700 cursor-pointer bg-transparent" />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-400">BG:</label>
+          <label className="text-sm text-gray-500 dark:text-gray-400">BG:</label>
           <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="w-7 h-7 rounded border border-gray-700 cursor-pointer bg-transparent" />
         </div>
       </div>
@@ -88,10 +88,10 @@ export default function QrCodeGenerator() {
       )}
 
       <div className="flex flex-col items-center gap-4">
-        <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 inline-block">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 inline-block">
           <canvas ref={canvasRef} className={text.trim() ? "" : "hidden"} />
           {!text.trim() && (
-            <div className="w-48 h-48 flex items-center justify-center text-gray-600 text-sm">
+            <div className="w-48 h-48 flex items-center justify-center text-gray-400 dark:text-gray-600 text-sm">
               Enter text to generate QR code
             </div>
           )}

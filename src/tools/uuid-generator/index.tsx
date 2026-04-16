@@ -35,7 +35,7 @@ export default function UuidGenerator() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label htmlFor="uuid-count" className="text-sm text-gray-400">
+          <label htmlFor="uuid-count" className="text-sm text-gray-500 dark:text-gray-400">
             Count:
           </label>
           <input
@@ -48,10 +48,10 @@ export default function UuidGenerator() {
               const val = Math.min(50, Math.max(1, parseInt(e.target.value) || 1));
               setCount(val);
             }}
-            className="w-20 bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-20 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
-        <label className="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
+        <label className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 cursor-pointer">
           <input
             type="checkbox"
             checked={uppercase}
@@ -69,7 +69,7 @@ export default function UuidGenerator() {
         {uuids.length > 0 && (
           <button
             onClick={copyAll}
-            className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
+            className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
           >
             {copiedIndex === -1 ? "Copied All!" : "Copy All"}
           </button>
@@ -77,19 +77,19 @@ export default function UuidGenerator() {
       </div>
 
       {uuids.length > 0 && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
           <div className="max-h-[500px] overflow-y-auto">
             {uuids.map((uuid, i) => (
               <div
                 key={i}
                 className={`flex items-center justify-between px-4 py-2 ${
                   i % 2 === 0 ? "bg-gray-900" : "bg-gray-900/50"
-                } ${i !== uuids.length - 1 ? "border-b border-gray-800" : ""}`}
+                } ${i !== uuids.length - 1 ? "border-b border-gray-200 dark:border-gray-800" : ""}`}
               >
                 <span className="text-gray-500 text-sm w-8 shrink-0">
                   {i + 1}.
                 </span>
-                <code className="font-mono text-sm text-gray-100 flex-1 select-all">
+                <code className="font-mono text-sm text-gray-900 dark:text-gray-100 flex-1 select-all">
                   {uuid}
                 </code>
                 <button

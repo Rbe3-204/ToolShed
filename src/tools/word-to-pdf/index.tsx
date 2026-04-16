@@ -108,7 +108,7 @@ export default function WordToPdf() {
 
       {loading && (
         <div className="text-center py-8">
-          <p className="text-gray-400 text-sm">Converting document...</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Converting document...</p>
         </div>
       )}
 

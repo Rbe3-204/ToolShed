@@ -102,7 +102,7 @@ function MiniPicker({
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        <span className="text-xs text-gray-400">{label}</span>
+        <span className="text-xs text-gray-500 dark:text-gray-400">{label}</span>
         <button
           onClick={() => setOpen(!open)}
           className="w-8 h-8 rounded-lg border border-gray-700 cursor-pointer hover:scale-110 transition-transform"
@@ -116,7 +116,7 @@ function MiniPicker({
             const p = hexToRgb(e.target.value);
             if (p) { const h = rgbToHsl(p.r, p.g, p.b); setHue(h.h); setSat(h.s); setBri(h.l); }
           }}
-          className="w-24 bg-gray-900 border border-gray-700 rounded-lg px-2 py-1 font-mono text-xs text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-24 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1 font-mono text-xs text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           spellCheck={false}
         />
       </div>
@@ -281,7 +281,7 @@ export default function ColorPicker() {
             </div>
             <div className="space-y-3">
               <div className="w-full h-32 rounded-xl border-2 border-gray-700 shadow-lg" style={{ backgroundColor: hex }} />
-              <button onClick={saveColor} className="w-full bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-1.5 text-sm transition-colors">
+              <button onClick={saveColor} className="w-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-1.5 text-sm transition-colors">
                 Save Color
               </button>
               {savedColors.length > 0 && (
@@ -297,33 +297,33 @@ export default function ColorPicker() {
           {/* Editable values */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-400 w-10 shrink-0 font-semibold">HEX</span>
-              <input type="text" value={hexInput} onChange={(e) => setFromHex(e.target.value)} className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" spellCheck={false} />
-              <button onClick={() => copyValue("hex", hex.toUpperCase())} className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-2 text-sm transition-colors shrink-0">{copied === "hex" ? "Copied!" : "Copy"}</button>
+              <span className="text-sm text-gray-500 dark:text-gray-400 w-10 shrink-0 font-semibold">HEX</span>
+              <input type="text" value={hexInput} onChange={(e) => setFromHex(e.target.value)} className="flex-1 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" spellCheck={false} />
+              <button onClick={() => copyValue("hex", hex.toUpperCase())} className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-2 text-sm transition-colors shrink-0">{copied === "hex" ? "Copied!" : "Copy"}</button>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-400 w-10 shrink-0 font-semibold">RGB</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400 w-10 shrink-0 font-semibold">RGB</span>
               <div className="flex items-center gap-2 flex-1">
                 {(["r", "g", "b"] as const).map((ch) => (
                   <div key={ch} className="flex items-center gap-1 flex-1">
                     <span className="text-xs text-gray-500 uppercase">{ch}</span>
-                    <input type="number" min={0} max={255} value={rgb[ch]} onChange={(e) => { const val = Math.min(255, Math.max(0, parseInt(e.target.value) || 0)); const newRgb = { ...rgb, [ch]: val }; setFromRgb(newRgb.r, newRgb.g, newRgb.b); }} className="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    <input type="number" min={0} max={255} value={rgb[ch]} onChange={(e) => { const val = Math.min(255, Math.max(0, parseInt(e.target.value) || 0)); const newRgb = { ...rgb, [ch]: val }; setFromRgb(newRgb.r, newRgb.g, newRgb.b); }} className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                   </div>
                 ))}
               </div>
-              <button onClick={() => copyValue("rgb", rgbString)} className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-2 text-sm transition-colors shrink-0">{copied === "rgb" ? "Copied!" : "Copy"}</button>
+              <button onClick={() => copyValue("rgb", rgbString)} className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-2 text-sm transition-colors shrink-0">{copied === "rgb" ? "Copied!" : "Copy"}</button>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-400 w-10 shrink-0 font-semibold">HSL</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400 w-10 shrink-0 font-semibold">HSL</span>
               <div className="flex items-center gap-2 flex-1">
                 {([{ key: "h", max: 360, val: hue }, { key: "s", max: 100, val: saturation }, { key: "l", max: 100, val: brightness }] as const).map(({ key, max, val }) => (
                   <div key={key} className="flex items-center gap-1 flex-1">
                     <span className="text-xs text-gray-500 uppercase">{key}</span>
-                    <input type="number" min={0} max={max} value={val} onChange={(e) => { const v = Math.min(max, Math.max(0, parseInt(e.target.value) || 0)); setFromHsl(key === "h" ? v : hue, key === "s" ? v : saturation, key === "l" ? v : brightness); }} className="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    <input type="number" min={0} max={max} value={val} onChange={(e) => { const v = Math.min(max, Math.max(0, parseInt(e.target.value) || 0)); setFromHsl(key === "h" ? v : hue, key === "s" ? v : saturation, key === "l" ? v : brightness); }} className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                   </div>
                 ))}
               </div>
-              <button onClick={() => copyValue("hsl", hslString)} className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-2 text-sm transition-colors shrink-0">{copied === "hsl" ? "Copied!" : "Copy"}</button>
+              <button onClick={() => copyValue("hsl", hslString)} className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-2 text-sm transition-colors shrink-0">{copied === "hsl" ? "Copied!" : "Copy"}</button>
             </div>
           </div>
         </>
@@ -338,13 +338,13 @@ export default function ColorPicker() {
               <MiniPicker color={gradColor2} onChange={setGradColor2} label="Color 2" />
             </div>
             <div className="space-y-3">
-              <label className="block text-sm text-gray-400">Direction</label>
+              <label className="block text-sm text-gray-500 dark:text-gray-400">Direction</label>
               <div className="flex flex-wrap gap-2">
                 {DIRECTIONS.map(({ label, value }) => (
                   <button
                     key={value}
                     onClick={() => setGradDirection(value)}
-                    className={`px-3 py-1.5 text-xs rounded-lg transition-colors ${gradDirection === value ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}
+                    className={`px-3 py-1.5 text-xs rounded-lg transition-colors ${gradDirection === value ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-700"}`}
                   >
                     {label}
                   </button>
@@ -355,9 +355,9 @@ export default function ColorPicker() {
 
           {/* CSS output */}
           <div>
-            <label className="block text-sm text-gray-400 mb-1">CSS Code</label>
-            <div className="bg-gray-900 border border-gray-700 rounded-lg p-4">
-              <code className="font-mono text-sm text-gray-100 break-all">{gradientCSS}</code>
+            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">CSS Code</label>
+            <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+              <code className="font-mono text-sm text-gray-900 dark:text-gray-100 break-all">{gradientCSS}</code>
             </div>
             <button
               onClick={() => copyValue("gradient", gradientCSS)}

@@ -103,12 +103,12 @@ export default function HashGenerator() {
       {tab === "generate" ? (
         <>
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Input</label>
+            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Input</label>
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter text to hash..."
-              className="w-full h-28 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full h-28 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               spellCheck={false}
             />
           </div>
@@ -117,7 +117,7 @@ export default function HashGenerator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-sm text-gray-400">Salt</label>
+                <label className="text-sm text-gray-500 dark:text-gray-400">Salt</label>
                 <button
                   onClick={() => setSalt(generateSalt())}
                   className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
@@ -130,24 +130,24 @@ export default function HashGenerator() {
                 value={salt}
                 onChange={(e) => setSalt(e.target.value)}
                 placeholder="Optional salt value..."
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 spellCheck={false}
               />
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-gray-400 dark:text-gray-600 mt-1">
                 Random value prepended to input before hashing
               </p>
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Pepper</label>
+              <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Pepper</label>
               <input
                 type="text"
                 value={pepper}
                 onChange={(e) => setPepper(e.target.value)}
                 placeholder="Optional secret pepper..."
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 spellCheck={false}
               />
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-gray-400 dark:text-gray-600 mt-1">
                 Secret value prepended before salt + input
               </p>
             </div>
@@ -170,20 +170,20 @@ export default function HashGenerator() {
           </button>
 
           {Object.keys(hashes).length > 0 && (
-            <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
               {ALGORITHMS.map((algo, i) => (
                 <div
                   key={algo}
                   className={`flex items-center gap-3 px-4 py-3 ${
                     i !== ALGORITHMS.length - 1
-                      ? "border-b border-gray-800"
+                      ? "border-b border-gray-200 dark:border-gray-800"
                       : ""
                   }`}
                 >
-                  <span className="text-sm text-gray-400 w-20 shrink-0 font-semibold">
+                  <span className="text-sm text-gray-500 dark:text-gray-400 w-20 shrink-0 font-semibold">
                     {algo}
                   </span>
-                  <code className="font-mono text-xs text-gray-100 flex-1 min-w-0 break-all select-all">
+                  <code className="font-mono text-xs text-gray-900 dark:text-gray-100 flex-1 min-w-0 break-all select-all">
                     {hashes[algo]}
                   </code>
                   <button
@@ -210,20 +210,20 @@ export default function HashGenerator() {
         <>
           {/* Verify tab */}
           <div>
-            <label className="block text-sm text-gray-400 mb-1">
+            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">
               Original Text
             </label>
             <textarea
               value={verifyInput}
               onChange={(e) => { setVerifyInput(e.target.value); setVerifyResult(null); }}
               placeholder="Enter the original text..."
-              className="w-full h-20 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full h-20 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               spellCheck={false}
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">
+            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">
               Hash to Verify
             </label>
             <input
@@ -231,31 +231,31 @@ export default function HashGenerator() {
               value={verifyHash}
               onChange={(e) => { setVerifyHash(e.target.value); setVerifyResult(null); }}
               placeholder="Paste hash to check against..."
-              className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               spellCheck={false}
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Salt</label>
+              <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Salt</label>
               <input
                 type="text"
                 value={verifySalt}
                 onChange={(e) => { setVerifySalt(e.target.value); setVerifyResult(null); }}
                 placeholder="Salt used during hashing..."
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 spellCheck={false}
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Pepper</label>
+              <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Pepper</label>
               <input
                 type="text"
                 value={verifyPepper}
                 onChange={(e) => { setVerifyPepper(e.target.value); setVerifyResult(null); }}
                 placeholder="Pepper used during hashing..."
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 spellCheck={false}
               />
             </div>

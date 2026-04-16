@@ -99,7 +99,7 @@ function MiniColorPicker({
         style={{ backgroundColor: color }}
       />
       {open && (
-        <div className="absolute bottom-10 left-0 z-50 bg-gray-900 border border-gray-700 rounded-xl p-3 shadow-2xl w-56">
+        <div className="absolute bottom-10 left-0 z-50 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-3 shadow-2xl w-56">
           <div
             ref={canvasRef}
             onMouseDown={handleMouseDown}
@@ -128,7 +128,7 @@ function MiniColorPicker({
             }}
           />
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs text-gray-400">{color.toUpperCase()}</span>
+            <span className="font-mono text-xs text-gray-500 dark:text-gray-400">{color.toUpperCase()}</span>
             <button
               onClick={() => setOpen(false)}
               className="text-xs text-blue-400 hover:text-blue-300"
@@ -181,7 +181,7 @@ export default function BoxShadowGenerator() {
   return (
     <div className="space-y-6">
       {/* Preview */}
-      <div className="bg-gray-900 border border-gray-700 rounded-lg p-8 flex items-center justify-center min-h-[250px]">
+      <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8 flex items-center justify-center min-h-[250px]">
         <div
           className="w-48 h-48 bg-gray-100 rounded-xl transition-shadow duration-200"
           style={{ boxShadow: shadowValue }}
@@ -194,8 +194,8 @@ export default function BoxShadowGenerator() {
           {sliders.map(({ label, value, set, min, max, suffix }) => (
             <div key={label}>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-sm text-gray-400">{label}</label>
-                <span className="text-sm text-gray-100 font-mono">
+                <label className="text-sm text-gray-500 dark:text-gray-400">{label}</label>
+                <span className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                   {value}{suffix || "px"}
                 </span>
               </div>
@@ -212,7 +212,7 @@ export default function BoxShadowGenerator() {
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm text-gray-400">Color</label>
+              <label className="text-sm text-gray-500 dark:text-gray-400">Color</label>
               <MiniColorPicker color={color} onChange={setColor} />
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
@@ -229,9 +229,9 @@ export default function BoxShadowGenerator() {
 
         {/* CSS Output */}
         <div>
-          <label className="block text-sm text-gray-400 mb-1">CSS Code</label>
-          <div className="bg-gray-900 border border-gray-700 rounded-lg p-4">
-            <code className="font-mono text-sm text-gray-100 break-all">
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">CSS Code</label>
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+            <code className="font-mono text-sm text-gray-900 dark:text-gray-100 break-all">
               {cssCode}
             </code>
           </div>

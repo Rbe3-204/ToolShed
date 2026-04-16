@@ -103,12 +103,12 @@ export default function PdfMerge() {
 
       {/* File list */}
       {files.length > 0 && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
           {files.map((file, i) => (
-            <div key={i} className={`flex items-center gap-3 px-4 py-3 ${i !== files.length - 1 ? "border-b border-gray-800" : ""}`}>
+            <div key={i} className={`flex items-center gap-3 px-4 py-3 ${i !== files.length - 1 ? "border-b border-gray-200 dark:border-gray-800" : ""}`}>
               <span className="text-sm text-gray-500 w-6 shrink-0">{i + 1}.</span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm text-gray-100 truncate">{file.name}</p>
+                <p className="text-sm text-gray-900 dark:text-gray-100 truncate">{file.name}</p>
                 <p className="text-xs text-gray-500">{file.pages} pages &middot; {(file.size / 1024).toFixed(0)} KB</p>
               </div>
               <div className="flex items-center gap-1 shrink-0">

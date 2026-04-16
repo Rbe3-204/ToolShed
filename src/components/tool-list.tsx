@@ -42,7 +42,7 @@ export default function ToolList() {
       <div className="max-w-xl mx-auto">
         <div className="relative">
           <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -62,14 +62,14 @@ export default function ToolList() {
               if (e.target.value) setActiveCategory(null);
             }}
             placeholder="Search tools..."
-            className="w-full bg-gray-900 border border-gray-700 rounded-xl pl-10 pr-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl pl-10 pr-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
           />
         </div>
       </div>
 
       {/* Categories */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-100 mb-4">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Categories
         </h2>
         <CategoryGrid onCategoryClick={handleCategoryClick} />
@@ -78,11 +78,11 @@ export default function ToolList() {
       {/* Tools */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-100">All Tools</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">All Tools</h2>
           {activeCategory && (
             <button
               onClick={() => setActiveCategory(null)}
-              className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
             >
               Clear filter
             </button>
@@ -96,7 +96,7 @@ export default function ToolList() {
             className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
               !activeCategory
                 ? "bg-blue-600 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
             }`}
           >
             All
@@ -108,7 +108,7 @@ export default function ToolList() {
               className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
                 activeCategory === cat.name
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >
               {cat.emoji} {cat.name}

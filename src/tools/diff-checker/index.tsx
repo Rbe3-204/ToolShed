@@ -111,22 +111,22 @@ export default function DiffChecker() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Original</label>
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Original</label>
           <textarea
             value={left}
             onChange={(e) => setLeft(e.target.value)}
             placeholder="Paste original text..."
-            className="w-full h-52 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full h-52 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             spellCheck={false}
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Modified</label>
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Modified</label>
           <textarea
             value={right}
             onChange={(e) => setRight(e.target.value)}
             placeholder="Paste modified text..."
-            className="w-full h-52 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full h-52 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             spellCheck={false}
           />
         </div>
@@ -142,7 +142,7 @@ export default function DiffChecker() {
             </span>
           </div>
 
-          <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
             <div className="max-h-[500px] overflow-y-auto font-mono text-sm">
               {diff.map((line, i) => (
                 <div
@@ -155,10 +155,10 @@ export default function DiffChecker() {
                         : ""
                   }`}
                 >
-                  <span className="w-10 text-right pr-2 text-gray-600 select-none shrink-0 py-0.5 text-xs leading-5">
+                  <span className="w-10 text-right pr-2 text-gray-400 dark:text-gray-600 select-none shrink-0 py-0.5 text-xs leading-5">
                     {line.lineNum.left ?? ""}
                   </span>
-                  <span className="w-10 text-right pr-2 text-gray-600 select-none shrink-0 py-0.5 text-xs leading-5">
+                  <span className="w-10 text-right pr-2 text-gray-400 dark:text-gray-600 select-none shrink-0 py-0.5 text-xs leading-5">
                     {line.lineNum.right ?? ""}
                   </span>
                   <span
@@ -182,7 +182,7 @@ export default function DiffChecker() {
                         ? "text-green-300"
                         : line.type === "removed"
                           ? "text-red-300"
-                          : "text-gray-400"
+                          : "text-gray-500 dark:text-gray-400"
                     }`}
                   >
                     {line.text}

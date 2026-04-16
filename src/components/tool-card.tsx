@@ -8,10 +8,10 @@ export default function ToolCard({ tool }: { tool: ToolDefinition }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="group block p-5 bg-gray-900 border border-gray-800 rounded-xl hover:bg-gray-800 hover:border-gray-700 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
+      className="group block p-5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
     >
       <div className="flex items-start justify-between mb-2">
-        <h3 className="font-semibold text-gray-100 group-hover:text-white transition-colors">
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white transition-colors">
           {tool.name}
         </h3>
         <span
@@ -20,7 +20,7 @@ export default function ToolCard({ tool }: { tool: ToolDefinition }) {
           {tool.category}
         </span>
       </div>
-      <p className="text-sm text-gray-400 line-clamp-2">{tool.description}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{tool.description}</p>
     </Link>
   );
 }

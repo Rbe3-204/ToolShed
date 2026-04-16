@@ -165,7 +165,7 @@ export default function Base64Codec() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Input</label>
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Input</label>
           {inputType === "text" ? (
             <textarea
               value={inputText}
@@ -175,7 +175,7 @@ export default function Base64Codec() {
                   ? "Enter text to encode..."
                   : "Enter Base64 string to decode..."
               }
-              className="w-full h-80 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full h-80 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               spellCheck={false}
             />
           ) : (
@@ -213,9 +213,9 @@ export default function Base64Codec() {
           )}
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Output</label>
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Output</label>
           {isDownloadMode ? (
-            <div className="w-full h-80 bg-gray-900 border border-gray-700 rounded-lg flex flex-col items-center justify-center">
+            <div className="w-full h-80 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg flex flex-col items-center justify-center">
               <button
                 onClick={handleDownload}
                 className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-6 py-2 text-sm transition-colors"
@@ -228,7 +228,7 @@ export default function Base64Codec() {
               value={outputText}
               readOnly
               placeholder="Output will appear here..."
-              className="w-full h-80 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none"
+              className="w-full h-80 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none"
             />
           )}
         </div>
@@ -247,7 +247,7 @@ export default function Base64Codec() {
           <button
             onClick={copyOutput}
             disabled={!outputText}
-            className="bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
+            className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
           >
             {copied ? "Copied!" : "Copy Output"}
           </button>

@@ -74,19 +74,19 @@ export default function HtmlEntities() {
         <button onClick={handleConvert} className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-1.5 text-sm transition-colors">
           {mode === "encode" ? "Encode" : "Decode"}
         </button>
-        <button onClick={copyOutput} disabled={!output} className="bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto">
+        <button onClick={copyOutput} disabled={!output} className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto">
           {copied ? "Copied!" : "Copy Output"}
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Input</label>
-          <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={mode === "encode" ? '<div class="test">' : "&lt;div class=&quot;test&quot;&gt;"} className="w-full h-52 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" spellCheck={false} />
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Input</label>
+          <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={mode === "encode" ? '<div class="test">' : "&lt;div class=&quot;test&quot;&gt;"} className="w-full h-52 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" spellCheck={false} />
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Output</label>
-          <textarea value={output} readOnly placeholder="Result will appear here..." className="w-full h-52 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none" />
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Output</label>
+          <textarea value={output} readOnly placeholder="Result will appear here..." className="w-full h-52 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none" />
         </div>
       </div>
     </div>

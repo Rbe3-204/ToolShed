@@ -59,7 +59,7 @@ function markdownToHtml(md: string): string {
   // Blockquotes
   html = html.replace(
     /^>\s+(.+)$/gm,
-    '<blockquote class="border-l-4 border-gray-600 pl-4 italic text-gray-400">$1</blockquote>'
+    '<blockquote class="border-l-4 border-gray-600 pl-4 italic text-gray-500 dark:text-gray-400">$1</blockquote>'
   );
 
   // Paragraphs: wrap remaining lines
@@ -136,23 +136,23 @@ export default function MarkdownPreview() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <label className="block text-sm text-gray-400 mb-1">
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">
           Markdown Input
         </label>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type markdown here..."
-          className="w-full h-[500px] bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full h-[500px] bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           spellCheck={false}
         />
       </div>
       <div>
-        <label className="block text-sm text-gray-400 mb-1">Preview</label>
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Preview</label>
         <div
-          className="w-full h-[500px] bg-gray-900 border border-gray-700 rounded-lg p-4 overflow-y-auto prose prose-invert prose-sm max-w-none
-            [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mb-3 [&_h1]:text-gray-100
-            [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mb-2 [&_h2]:mt-4 [&_h2]:text-gray-100
+          className="w-full h-[500px] bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 overflow-y-auto prose prose-invert prose-sm max-w-none
+            [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mb-3 [&_h1]:text-gray-900 dark:text-gray-100
+            [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mb-2 [&_h2]:mt-4 [&_h2]:text-gray-900 dark:text-gray-100
             [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mb-2 [&_h3]:mt-3 [&_h3]:text-gray-200
             [&_p]:mb-3 [&_p]:text-gray-300 [&_p]:leading-relaxed
             [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-3 [&_ul]:text-gray-300

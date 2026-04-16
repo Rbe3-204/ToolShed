@@ -74,14 +74,14 @@ export default function PasswordGenerator() {
     <div className="space-y-4">
       {/* Output */}
       {password && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg p-4">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
           <div className="flex items-center gap-3">
-            <code className="font-mono text-lg text-gray-100 flex-1 break-all select-all">
+            <code className="font-mono text-lg text-gray-900 dark:text-gray-100 flex-1 break-all select-all">
               {password}
             </code>
             <button
               onClick={copyPassword}
-              className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-1.5 text-sm transition-colors shrink-0"
+              className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-3 py-1.5 text-sm transition-colors shrink-0"
             >
               {copied ? "Copied!" : "Copy"}
             </button>
@@ -90,7 +90,7 @@ export default function PasswordGenerator() {
             <div className="mt-3">
               <div className="flex items-center justify-between mb-1">
                 <span className="text-xs text-gray-500">Strength</span>
-                <span className="text-xs text-gray-400">{strength.label}</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">{strength.label}</span>
               </div>
               <div className="w-full bg-gray-800 rounded-full h-1.5">
                 <div
@@ -106,8 +106,8 @@ export default function PasswordGenerator() {
       <div className="space-y-4">
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label className="text-sm text-gray-400">
-              Length: <span className="text-gray-100 font-semibold">{length}</span>
+            <label className="text-sm text-gray-500 dark:text-gray-400">
+              Length: <span className="text-gray-900 dark:text-gray-100 font-semibold">{length}</span>
             </label>
           </div>
           <input
@@ -118,7 +118,7 @@ export default function PasswordGenerator() {
             onChange={(e) => setLength(parseInt(e.target.value))}
             className="w-full accent-blue-600"
           />
-          <div className="flex justify-between text-xs text-gray-600 mt-1">
+          <div className="flex justify-between text-xs text-gray-400 dark:text-gray-600 mt-1">
             <span>4</span>
             <span>64</span>
           </div>

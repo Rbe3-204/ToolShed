@@ -5,10 +5,10 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-100 mb-4">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           ToolShed
         </h1>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
           Free, open-source developer utilities.
           <br />
           100% client-side &mdash; nothing leaves your browser.

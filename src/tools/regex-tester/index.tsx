@@ -59,13 +59,13 @@ export default function RegexTester() {
             value={pattern}
             onChange={(e) => setPattern(e.target.value)}
             placeholder="Enter regex pattern..."
-            className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1.5 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             spellCheck={false}
           />
           <span className="text-gray-500 font-mono text-lg">/</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-sm text-gray-400 mr-1">Flags:</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400 mr-1">Flags:</span>
           {[
             { flag: "g", label: "g", active: flagG, set: setFlagG },
             { flag: "i", label: "i", active: flagI, set: setFlagI },
@@ -77,7 +77,7 @@ export default function RegexTester() {
               className={`w-8 h-8 rounded-lg font-mono text-sm transition-colors ${
                 active
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                  : "bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-700"
               }`}
             >
               {label}
@@ -87,12 +87,12 @@ export default function RegexTester() {
       </div>
 
       <div>
-        <label className="block text-sm text-gray-400 mb-1">Test String</label>
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Test String</label>
         <textarea
           value={testString}
           onChange={(e) => setTestString(e.target.value)}
           placeholder="Enter text to test against..."
-          className="w-full h-48 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full h-48 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           spellCheck={false}
         />
       </div>
@@ -105,18 +105,18 @@ export default function RegexTester() {
 
       {!error && pattern && testString && (
         <div>
-          <h3 className="text-sm font-semibold text-gray-400 mb-2">
+          <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">
             Matches ({matches.length} found)
           </h3>
           {matches.length > 0 ? (
-            <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+            <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
               <div className="max-h-[400px] overflow-y-auto">
                 {matches.map((m, i) => (
                   <div
                     key={i}
                     className={`px-4 py-3 ${
                       i !== matches.length - 1
-                        ? "border-b border-gray-800"
+                        ? "border-b border-gray-200 dark:border-gray-800"
                         : ""
                     }`}
                   >

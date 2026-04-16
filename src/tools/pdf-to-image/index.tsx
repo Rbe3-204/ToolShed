@@ -73,13 +73,13 @@ export default function PdfToImage() {
       </label>
 
       <div className="flex items-center gap-3">
-        <label className="text-sm text-gray-400">Quality:</label>
+        <label className="text-sm text-gray-500 dark:text-gray-400">Quality:</label>
         <input
           type="range" min={1} max={4} step={0.5} value={scale}
           onChange={(e) => setScale(parseFloat(e.target.value))}
           className="w-32 accent-blue-600"
         />
-        <span className="text-sm text-gray-100 font-mono">{scale}x</span>
+        <span className="text-sm text-gray-900 dark:text-gray-100 font-mono">{scale}x</span>
       </div>
 
       {error && (
@@ -88,7 +88,7 @@ export default function PdfToImage() {
 
       {loading && (
         <div className="text-center py-8">
-          <p className="text-gray-400 text-sm">Rendering pages...</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Rendering pages...</p>
         </div>
       )}
 
@@ -106,7 +106,7 @@ export default function PdfToImage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {images.map((img, i) => (
-              <div key={i} className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+              <div key={i} className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                 <img src={img} alt={`Page ${i + 1}`} className="w-full" />
                 <div className="flex items-center justify-between px-3 py-2 border-t border-gray-800">
                   <span className="text-xs text-gray-500">Page {i + 1}</span>

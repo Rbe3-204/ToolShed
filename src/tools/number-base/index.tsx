@@ -36,7 +36,7 @@ export default function NumberBaseConverter() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-400">From:</label>
+          <label className="text-sm text-gray-500 dark:text-gray-400">From:</label>
           <div className="flex rounded-lg overflow-hidden border border-gray-700">
             {BASES.map(({ label, base }) => (
               <button
@@ -52,13 +52,13 @@ export default function NumberBaseConverter() {
       </div>
 
       <div>
-        <label className="block text-sm text-gray-400 mb-1">Input</label>
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Input</label>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={`Enter a ${BASES.find((b) => b.base === fromBase)?.label.toLowerCase()} number...`}
-          className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           spellCheck={false}
         />
       </div>
@@ -70,17 +70,17 @@ export default function NumberBaseConverter() {
       )}
 
       {parsed !== null && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
           {BASES.map(({ label, base, prefix }, i) => {
             const result = parsed.toString(base).toUpperCase();
             const display = `${prefix}${result}`;
             return (
               <div
                 key={base}
-                className={`flex items-center gap-3 px-4 py-3 ${i !== BASES.length - 1 ? "border-b border-gray-800" : ""}`}
+                className={`flex items-center gap-3 px-4 py-3 ${i !== BASES.length - 1 ? "border-b border-gray-200 dark:border-gray-800" : ""}`}
               >
-                <span className="text-sm text-gray-400 w-28 shrink-0 font-semibold">{label}</span>
-                <code className="font-mono text-sm text-gray-100 flex-1 min-w-0 break-all select-all">{display}</code>
+                <span className="text-sm text-gray-500 dark:text-gray-400 w-28 shrink-0 font-semibold">{label}</span>
+                <code className="font-mono text-sm text-gray-900 dark:text-gray-100 flex-1 min-w-0 break-all select-all">{display}</code>
                 <button
                   onClick={() => copy(label, display)}
                   className="text-gray-500 hover:text-gray-300 shrink-0 transition-colors text-xs"

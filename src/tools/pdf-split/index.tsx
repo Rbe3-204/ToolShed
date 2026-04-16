@@ -100,19 +100,19 @@ export default function PdfSplit() {
 
       {pdfBytes && (
         <>
-          <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3">
-            <p className="text-sm text-gray-100">{fileName}</p>
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3">
+            <p className="text-sm text-gray-900 dark:text-gray-100">{fileName}</p>
             <p className="text-xs text-gray-500">{totalPages} pages</p>
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Page Range</label>
+            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Page Range</label>
             <input
               type="text"
               value={rangeInput}
               onChange={(e) => setRangeInput(e.target.value)}
               placeholder="e.g. 1-3, 5, 7-10"
-              className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <p className="text-xs text-gray-500 mt-1">
               {selectedPages.length > 0

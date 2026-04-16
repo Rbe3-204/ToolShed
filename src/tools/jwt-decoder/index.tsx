@@ -63,20 +63,20 @@ function Section({
   }
 
   return (
-    <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+    <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
       <div className={`px-4 py-2 border-b border-gray-700 flex items-center justify-between ${color}`}>
         <div>
-          <span className="text-sm font-semibold text-gray-100">{title}</span>
-          <span className="text-xs text-gray-400 ml-2">{subtitle}</span>
+          <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">{title}</span>
+          <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">{subtitle}</span>
         </div>
         <button
           onClick={copy}
-          className="text-xs text-gray-400 hover:text-gray-200 transition-colors"
+          className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-200 transition-colors"
         >
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <pre className="p-4 font-mono text-sm text-gray-100 overflow-x-auto whitespace-pre-wrap break-all">
+      <pre className="p-4 font-mono text-sm text-gray-900 dark:text-gray-100 overflow-x-auto whitespace-pre-wrap break-all">
         {content}
       </pre>
     </div>
@@ -94,14 +94,14 @@ export default function JwtDecoder() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm text-gray-400 mb-1">
+        <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">
           Paste JWT Token
         </label>
         <textarea
           value={token}
           onChange={(e) => setToken(e.target.value)}
           placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U"
-          className="w-full h-28 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full h-28 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           spellCheck={false}
         />
       </div>

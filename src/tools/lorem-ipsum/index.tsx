@@ -68,7 +68,7 @@ export default function LoremIpsumGenerator() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label htmlFor="lorem-count" className="text-sm text-gray-400">
+          <label htmlFor="lorem-count" className="text-sm text-gray-500 dark:text-gray-400">
             Count:
           </label>
           <input
@@ -84,7 +84,7 @@ export default function LoremIpsumGenerator() {
               );
               setCount(val);
             }}
-            className="w-20 bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-20 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
         <div className="flex rounded-lg overflow-hidden border border-gray-700">
@@ -111,7 +111,7 @@ export default function LoremIpsumGenerator() {
         {output && (
           <button
             onClick={copyOutput}
-            className="bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
+            className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
           >
             {copied ? "Copied!" : "Copy All"}
           </button>
@@ -119,8 +119,8 @@ export default function LoremIpsumGenerator() {
       </div>
 
       {output && (
-        <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 max-h-[500px] overflow-y-auto">
-          <p className="text-sm text-gray-100 whitespace-pre-line leading-relaxed">
+        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 max-h-[500px] overflow-y-auto">
+          <p className="text-sm text-gray-900 dark:text-gray-100 whitespace-pre-line leading-relaxed">
             {output}
           </p>
         </div>

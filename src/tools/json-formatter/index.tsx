@@ -57,7 +57,7 @@ export default function JsonFormatter() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-400">Indent:</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">Indent:</span>
           <button
             onClick={() => setIndentSize(2)}
             className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
@@ -102,7 +102,7 @@ export default function JsonFormatter() {
         <button
           onClick={copyOutput}
           disabled={!output}
-          className="bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
+          className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 rounded-lg px-4 py-1.5 text-sm transition-colors ml-auto"
         >
           {copied ? "Copied!" : "Copy Output"}
         </button>
@@ -110,22 +110,22 @@ export default function JsonFormatter() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Input</label>
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Input</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder='Paste JSON here...\n{"key": "value"}'
-            className="w-full h-96 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full h-96 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             spellCheck={false}
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-1">Output</label>
+          <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Output</label>
           <textarea
             value={output}
             readOnly
             placeholder="Formatted output will appear here..."
-            className="w-full h-96 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-100 placeholder-gray-600 resize-none focus:outline-none"
+            className="w-full h-96 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600 resize-none focus:outline-none"
           />
         </div>
       </div>

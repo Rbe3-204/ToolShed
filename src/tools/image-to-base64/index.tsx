@@ -82,14 +82,14 @@ export default function ImageToBase64() {
       {preview && (
         <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4">
           {/* Preview */}
-          <div className="bg-gray-900 border border-gray-700 rounded-lg p-2 flex items-center justify-center">
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-2 flex items-center justify-center">
             <img src={preview} alt="Preview" className="max-w-full max-h-48 rounded" />
           </div>
           {/* Info */}
           <div className="space-y-2 text-sm">
-            <p className="text-gray-400">File: <span className="text-gray-100">{fileName}</span></p>
-            <p className="text-gray-400">Original: <span className="text-gray-100">{(fileSize / 1024).toFixed(1)} KB</span></p>
-            <p className="text-gray-400">Base64: <span className="text-gray-100">{(b64Size / 1024).toFixed(1)} KB</span> <span className="text-gray-500">({Math.round((b64Size / fileSize) * 100)}% of original)</span></p>
+            <p className="text-gray-500 dark:text-gray-400">File: <span className="text-gray-900 dark:text-gray-100">{fileName}</span></p>
+            <p className="text-gray-500 dark:text-gray-400">Original: <span className="text-gray-900 dark:text-gray-100">{(fileSize / 1024).toFixed(1)} KB</span></p>
+            <p className="text-gray-500 dark:text-gray-400">Base64: <span className="text-gray-900 dark:text-gray-100">{(b64Size / 1024).toFixed(1)} KB</span> <span className="text-gray-500">({Math.round((b64Size / fileSize) * 100)}% of original)</span></p>
           </div>
         </div>
       )}
@@ -98,17 +98,17 @@ export default function ImageToBase64() {
         <div className="space-y-3">
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">Data URI</label>
+              <label className="text-sm text-gray-500 dark:text-gray-400">Data URI</label>
               <button onClick={() => copy("uri", dataUri)} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">{copied === "uri" ? "Copied!" : "Copy"}</button>
             </div>
-            <textarea value={dataUri} readOnly className="w-full h-24 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-xs text-gray-100 resize-none focus:outline-none" />
+            <textarea value={dataUri} readOnly className="w-full h-24 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-xs text-gray-900 dark:text-gray-100 resize-none focus:outline-none" />
           </div>
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">Base64 Only</label>
+              <label className="text-sm text-gray-500 dark:text-gray-400">Base64 Only</label>
               <button onClick={() => copy("b64", base64Only)} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">{copied === "b64" ? "Copied!" : "Copy"}</button>
             </div>
-            <textarea value={base64Only} readOnly className="w-full h-24 bg-gray-900 border border-gray-700 rounded-lg p-3 font-mono text-xs text-gray-100 resize-none focus:outline-none" />
+            <textarea value={base64Only} readOnly className="w-full h-24 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-xs text-gray-900 dark:text-gray-100 resize-none focus:outline-none" />
           </div>
         </div>
       )}
