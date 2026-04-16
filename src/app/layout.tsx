@@ -19,6 +19,20 @@ export const metadata: Metadata = {
   title: "ToolShed — Free Developer Utilities",
   description:
     "Free, open-source developer utilities. 100% client-side — nothing leaves your browser.",
+  metadataBase: new URL("https://toolshed.dev"),
+  openGraph: {
+    title: "ToolShed — Free Developer Utilities",
+    description:
+      "Free, open-source developer utilities. 100% client-side — nothing leaves your browser.",
+    type: "website",
+    siteName: "ToolShed",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ToolShed — Free Developer Utilities",
+    description:
+      "Free, open-source developer utilities. 100% client-side — nothing leaves your browser.",
+  },
 };
 
 export default function RootLayout({
