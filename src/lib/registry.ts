@@ -24,6 +24,7 @@ import PdfMerge from "@/tools/pdf-merge";
 import PdfSplit from "@/tools/pdf-split";
 import PdfToImage from "@/tools/pdf-to-image";
 import WordToPdf from "@/tools/word-to-pdf";
+import TypographyPlayground from "@/tools/typography";
 
 export const tools: ToolDefinition[] = [
   {
@@ -250,6 +251,15 @@ export const tools: ToolDefinition[] = [
     category: "Converters",
     keywords: ["word", "docx", "pdf", "convert", "document", "office"],
     component: WordToPdf,
+  },
+  {
+    name: "Typography Playground",
+    slug: "typography",
+    description:
+      "Preview Google Fonts, adjust styles, and generate type scales with CSS export.",
+    category: "Design",
+    keywords: ["font", "typography", "google fonts", "type scale", "preview", "css"],
+    component: TypographyPlayground,
   },
 ];
 

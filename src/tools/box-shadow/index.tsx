@@ -151,6 +151,16 @@ export default function BoxShadowGenerator() {
   const [opacity, setOpacity] = useState(40);
   const [inset, setInset] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [previewDark, setPreviewDark] = useState(true);
+  const [hexInput, setHexInput] = useState("#000000");
+
+  function handleHexInput(value: string) {
+    setHexInput(value);
+    const clean = value.replace("#", "");
+    if (clean.length === 6 && !isNaN(parseInt(clean, 16))) {
+      setColor(value.startsWith("#") ? value : `#${value}`);
+    }
+  }
 
   function hexToRgba(hex: string, alpha: number): string {
     const clean = hex.replace("#", "");
@@ -181,11 +191,19 @@ export default function BoxShadowGenerator() {
   return (
     <div className="space-y-6">
       {/* Preview */}
-      <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8 flex items-center justify-center min-h-[250px]">
-        <div
-          className="w-48 h-48 bg-gray-100 rounded-xl transition-shadow duration-200"
-          style={{ boxShadow: shadowValue }}
-        />
+      <div className="relative">
+        <div className={`${previewDark ? "bg-gray-900" : "bg-white"} border border-gray-200 dark:border-gray-700 rounded-lg p-8 flex items-center justify-center min-h-[250px] transition-colors`}>
+          <div
+            className={`w-48 h-48 ${previewDark ? "bg-gray-700" : "bg-gray-100"} rounded-xl transition-all duration-200`}
+            style={{ boxShadow: shadowValue }}
+          />
+        </div>
+        <button
+          onClick={() => setPreviewDark(!previewDark)}
+          className="absolute top-3 right-3 px-2 py-1 text-xs rounded-md bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+        >
+          {previewDark ? "Light BG" : "Dark BG"}
+        </button>
       </div>
 
       {/* Controls */}
@@ -213,7 +231,15 @@ export default function BoxShadowGenerator() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <label className="text-sm text-gray-500 dark:text-gray-400">Color</label>
-              <MiniColorPicker color={color} onChange={setColor} />
+              <MiniColorPicker color={color} onChange={(c) => { setColor(c); setHexInput(c); }} />
+              <input
+                type="text"
+                value={hexInput}
+                onChange={(e) => handleHexInput(e.target.value)}
+                className="w-24 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 font-mono text-xs text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                spellCheck={false}
+                placeholder="#000000"
+              />
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
               <input

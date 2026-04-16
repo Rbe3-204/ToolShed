@@ -166,6 +166,16 @@ export default function ColorPicker() {
   const [hexInput, setHexInput] = useState("#3B82F6");
   const [copied, setCopied] = useState<string | null>(null);
   const [savedColors, setSavedColors] = useState<string[]>([]);
+  const [previewText, setPreviewText] = useState("The quick brown fox jumps over the lazy dog");
+  const [previewBgDark, setPreviewBgDark] = useState(true);
+
+  // Load saved colors from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem("toolshed-saved-colors");
+    if (stored) {
+      try { setSavedColors(JSON.parse(stored)); } catch {}
+    }
+  }, []);
 
   // Gradient state
   const [gradColor1, setGradColor1] = useState("#3B82F6");
@@ -217,7 +227,17 @@ export default function ColorPicker() {
   }, [handleCanvasInteraction]);
 
   function saveColor() {
-    if (!savedColors.includes(hex)) setSavedColors((prev) => [...prev, hex].slice(-12));
+    if (!savedColors.includes(hex)) {
+      const updated = [...savedColors, hex];
+      setSavedColors(updated);
+      localStorage.setItem("toolshed-saved-colors", JSON.stringify(updated));
+    }
+  }
+
+  function deleteColor(c: string) {
+    const updated = savedColors.filter((s) => s !== c);
+    setSavedColors(updated);
+    localStorage.setItem("toolshed-saved-colors", JSON.stringify(updated));
   }
 
   async function copyValue(label: string, value: string) {
@@ -287,10 +307,41 @@ export default function ColorPicker() {
               {savedColors.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
                   {savedColors.map((c) => (
-                    <button key={c} onClick={() => setFromHex(c)} className="w-7 h-7 rounded-md border border-gray-700 hover:scale-110 transition-transform" style={{ backgroundColor: c }} title={c} />
+                    <div key={c} className="relative group">
+                      <button onClick={() => setFromHex(c)} className="w-7 h-7 rounded-md border border-gray-700 hover:scale-110 transition-transform" style={{ backgroundColor: c }} title={c} />
+                      <button
+                        onClick={(e) => { e.stopPropagation(); deleteColor(c); }}
+                        className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 text-white rounded-full text-[8px] leading-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        x
+                      </button>
+                    </div>
                   ))}
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Text preview */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="text-sm text-gray-500 dark:text-gray-400">Text Preview</label>
+              <button
+                onClick={() => setPreviewBgDark(!previewBgDark)}
+                className="text-xs px-2 py-1 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+              >
+                {previewBgDark ? "Light BG" : "Dark BG"}
+              </button>
+            </div>
+            <div className={`${previewBgDark ? "bg-gray-900" : "bg-white"} border border-gray-200 dark:border-gray-700 rounded-lg p-4 transition-colors`}>
+              <input
+                type="text"
+                value={previewText}
+                onChange={(e) => setPreviewText(e.target.value)}
+                className="w-full bg-transparent border-none outline-none text-lg font-medium"
+                style={{ color: hex }}
+                placeholder="Type to preview color..."
+              />
             </div>
           </div>
 
