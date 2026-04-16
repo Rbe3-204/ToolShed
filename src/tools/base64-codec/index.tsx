@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
 export default function Base64Codec() {
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -14,11 +16,16 @@ export default function Base64Codec() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function encode(text: string): string {
-    return btoa(unescape(encodeURIComponent(text)));
+    const bytes = new TextEncoder().encode(text);
+    let binary = "";
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    return btoa(binary);
   }
 
   function decode(b64: string): string {
-    return decodeURIComponent(escape(atob(b64)));
+    const binary = atob(b64);
+    const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
   }
 
   function handleConvert() {
@@ -37,8 +44,21 @@ export default function Base64Codec() {
     }
   }
 
+  // Cleanup blob URLs to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      if (outputText?.startsWith("blob:")) {
+        URL.revokeObjectURL(outputText);
+      }
+    };
+  }, [outputText]);
+
   function handleFileSelect(file: File) {
     setError(null);
+    if (file.size > MAX_FILE_SIZE) {
+      setError("File size exceeds 10MB limit");
+      return;
+    }
     setFileName(file.name);
 
     if (mode === "encode") {

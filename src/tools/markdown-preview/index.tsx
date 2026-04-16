@@ -2,12 +2,25 @@
 
 import { useState } from "react";
 
-function markdownToHtml(md: string): string {
-  let html = md;
+function sanitizeUrl(url: string): string {
+  const trimmed = url.trim().toLowerCase();
+  if (
+    trimmed.startsWith("javascript:") ||
+    trimmed.startsWith("data:") ||
+    trimmed.startsWith("vbscript:")
+  ) {
+    return "#";
+  }
+  return url;
+}
 
-  // Code blocks (``` ... ```)
+function markdownToHtml(md: string): string {
+  // First, escape all HTML in the input to prevent XSS
+  let html = escapeHtml(md);
+
+  // Code blocks (``` ... ```) — already escaped, just wrap
   html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_match, _lang, code) => {
-    return `<pre class="bg-gray-800 rounded-lg p-3 overflow-x-auto"><code>${escapeHtml(code.trim())}</code></pre>`;
+    return `<pre class="bg-gray-800 rounded-lg p-3 overflow-x-auto"><code>${code.trim()}</code></pre>`;
   });
 
   // Headings
@@ -26,10 +39,11 @@ function markdownToHtml(md: string): string {
   // Inline code
   html = html.replace(/`([^`]+)`/g, '<code class="bg-gray-800 px-1.5 py-0.5 rounded text-sm">$1</code>');
 
-  // Links
+  // Links — sanitize URLs to block javascript: and data: URIs
   html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" class="text-blue-400 underline" target="_blank" rel="noopener noreferrer">$1</a>'
+    (_match, text, url) =>
+      `<a href="${sanitizeUrl(url)}" class="text-blue-400 underline" target="_blank" rel="noopener noreferrer">${text}</a>`
   );
 
   // Horizontal rule
@@ -80,7 +94,13 @@ function escapeHtml(text: string): string {
 }
 
 function sanitize(html: string): string {
-  return html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+  // Remove any remaining dangerous tags/attributes that could have slipped through
+  return html
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, "")
+    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, "")
+    .replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, "")
+    .replace(/<embed\b[^>]*>/gi, "");
 }
 
 const DEFAULT_MD = `# Markdown Preview
