@@ -74,7 +74,20 @@ The `[slug]` route uses:
 **Client components** ("use client"):
 - `src/components/tool-list.tsx` - search + category filter
 - `src/components/category-grid.tsx` - clickable category cards
+- `src/components/carbon-ad.tsx` - Carbon Ads integration
 - All tool components in `src/tools/*/index.tsx`
+
+## Monetization
+
+### Carbon Ads
+- Component: `src/components/carbon-ad.tsx`
+- Placement: tool page sidebar, below Related Tools
+- Currently placeholder -- needs account signup at carbonads.net
+- Loads script dynamically via `useEffect`
+
+### Donation
+- "Support this project" link in `src/components/site-footer.tsx`
+- Links to Buy Me a Coffee (URL configurable)
 
 ## Styling Conventions
 
@@ -82,10 +95,9 @@ The `[slug]` route uses:
 - **Accent colors**: per-category colors on badges (blue, green, purple, amber, pink)
 - **Buttons**: `bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-1.5 text-sm`
 - **Inputs**: `bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500`
-- **Cards**: `bg-gray-900 border border-gray-800 rounded-xl hover:bg-gray-800`
-- **Monospace**: `font-mono` for code textareas, hashes, UUIDs
+- **Cards**: `bg-gray-900 border border-gray-800 rounded-xl hover:bg-gray-800 hover:scale-[1.02]`
+- **Monospace**: `font-mono` for code textareas, hashes, UUIDs, JWT tokens
 - **Container**: `max-w-7xl mx-auto px-4`
-- **No emojis in code** - emojis only in categories.ts data
 
 ## Directory Structure
 
@@ -98,12 +110,13 @@ src/
     not-found.tsx         - Custom 404
     tools/[slug]/page.tsx - Dynamic tool page
   components/
-    site-header.tsx       - Sticky header
-    site-footer.tsx       - Footer
+    site-header.tsx       - Sticky header with tool count badge
+    site-footer.tsx       - Footer with donation link
     category-grid.tsx     - Category card grid (client)
-    tool-card.tsx         - Individual tool card
+    tool-card.tsx         - Individual tool card with hover animation
     tool-list.tsx         - Search + filter + card grid (client)
     related-tools.tsx     - Sidebar for tool pages
+    carbon-ad.tsx         - Carbon Ads integration (client)
   lib/
     registry.ts           - THE registry (single source of truth)
     categories.ts         - Category metadata
@@ -115,6 +128,13 @@ src/
     regex-tester/         - Live regex matching with groups
     lorem-ipsum/          - Placeholder text generator
     color-converter/      - HEX/RGB/HSL converter with swatch
+    markdown-preview/     - Live Markdown to HTML preview
+    jwt-decoder/          - Decode JWT header/payload/signature
+    timestamp-converter/  - Unix timestamp to date conversion
+    css-minifier/         - Minify and beautify CSS
   types/
     tool.ts               - ToolCategory, ToolDefinition
+docs/
+  ARCHITECTURE.md         - This file
+  HANDOFF.md              - Session handoff for continuity
 ```

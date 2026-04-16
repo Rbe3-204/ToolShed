@@ -8,7 +8,7 @@ export default function ToolCard({ tool }: { tool: ToolDefinition }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="group block p-5 bg-gray-900 border border-gray-800 rounded-xl hover:bg-gray-800 hover:border-gray-700 transition-colors"
+      className="group block p-5 bg-gray-900 border border-gray-800 rounded-xl hover:bg-gray-800 hover:border-gray-700 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
     >
       <div className="flex items-start justify-between mb-2">
         <h3 className="font-semibold text-gray-100 group-hover:text-white transition-colors">

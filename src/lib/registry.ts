@@ -6,6 +6,10 @@ import HashGenerator from "@/tools/hash-generator";
 import RegexTester from "@/tools/regex-tester";
 import LoremIpsumGenerator from "@/tools/lorem-ipsum";
 import ColorConverter from "@/tools/color-converter";
+import MarkdownPreview from "@/tools/markdown-preview";
+import JwtDecoder from "@/tools/jwt-decoder";
+import TimestampConverter from "@/tools/timestamp-converter";
+import CssMinifier from "@/tools/css-minifier";
 
 export const tools: ToolDefinition[] = [
   {
@@ -70,6 +74,42 @@ export const tools: ToolDefinition[] = [
     category: "Design",
     keywords: ["hex", "rgb", "hsl", "color", "picker", "convert", "swatch"],
     component: ColorConverter,
+  },
+  {
+    name: "Markdown Preview",
+    slug: "markdown-preview",
+    description:
+      "Live Markdown to HTML preview with syntax highlighting.",
+    category: "Text",
+    keywords: ["markdown", "md", "preview", "html", "render"],
+    component: MarkdownPreview,
+  },
+  {
+    name: "JWT Decoder",
+    slug: "jwt-decoder",
+    description:
+      "Decode JWT tokens to inspect header, payload, and signature.",
+    category: "Developer",
+    keywords: ["jwt", "token", "decode", "header", "payload", "signature"],
+    component: JwtDecoder,
+  },
+  {
+    name: "Timestamp Converter",
+    slug: "timestamp-converter",
+    description:
+      "Convert between Unix timestamps and human-readable dates.",
+    category: "Converters",
+    keywords: ["unix", "timestamp", "epoch", "date", "time", "convert"],
+    component: TimestampConverter,
+  },
+  {
+    name: "CSS Minifier",
+    slug: "css-minifier",
+    description:
+      "Minify and beautify CSS code with size comparison.",
+    category: "Developer",
+    keywords: ["css", "minify", "beautify", "compress", "format", "stylesheet"],
+    component: CssMinifier,
   },
 ];
 

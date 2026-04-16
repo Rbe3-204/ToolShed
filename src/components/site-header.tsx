@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tools } from "@/lib/registry";
 
 export default function SiteHeader() {
   return (
@@ -13,6 +14,9 @@ export default function SiteHeader() {
             className="text-sm text-gray-400 hover:text-gray-100 transition-colors"
           >
             All Tools
+            <span className="ml-1.5 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full">
+              {tools.length}
+            </span>
           </Link>
         </nav>
       </div>

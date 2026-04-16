@@ -4,7 +4,7 @@
 
 ## Current State
 
-The project is fully functional with 7 client-side developer tools. Build passes, all tools work, dark theme applied throughout.
+The project is fully functional with 11 client-side developer tools. Build passes, all tools work, dark theme, monetization placeholders in place.
 
 ### What's Built
 - Next.js 14 App Router project with TypeScript + Tailwind CSS
@@ -13,8 +13,12 @@ The project is fully functional with 7 client-side developer tools. Build passes
 - Dynamic tool pages with SEO metadata and related tools sidebar
 - Custom 404 page
 - Dark theme with custom scrollbar and selection colors
+- Carbon Ads placeholder in tool page sidebar
+- Donation link in footer (Buy Me a Coffee)
+- Tool count badge in header
+- Hover animations on tool cards
 
-### Tools (7 total)
+### Tools (11 total)
 | Tool | Slug | Category | Status |
 |------|------|----------|--------|
 | JSON Formatter | json-formatter | Developer | Done |
@@ -24,13 +28,29 @@ The project is fully functional with 7 client-side developer tools. Build passes
 | Regex Tester | regex-tester | Text | Done |
 | Lorem Ipsum Generator | lorem-ipsum | Generators | Done |
 | Color Converter | color-converter | Design | Done |
+| Markdown Preview | markdown-preview | Text | Done |
+| JWT Decoder | jwt-decoder | Developer | Done |
+| Timestamp Converter | timestamp-converter | Converters | Done |
+| CSS Minifier | css-minifier | Developer | Done |
 
 ### Category Coverage
-- Text: 1 tool (Regex Tester)
-- Developer: 2 tools (JSON Formatter, Hash Generator)
-- Converters: 1 tool (Base64 Codec)
+- Text: 2 tools (Regex Tester, Markdown Preview)
+- Developer: 4 tools (JSON Formatter, Hash Generator, JWT Decoder, CSS Minifier)
+- Converters: 2 tools (Base64 Codec, Timestamp Converter)
 - Generators: 2 tools (UUID Generator, Lorem Ipsum)
 - Design: 1 tool (Color Converter)
+
+## Monetization
+
+### Carbon Ads (placeholder)
+- Component: `src/components/carbon-ad.tsx`
+- Placed in tool page sidebar below Related Tools
+- Currently shows placeholder -- needs Carbon Ads account signup
+- To activate: set `CARBON_SERVE_ID` and `CARBON_PLACEMENT_ID` in the component
+
+### Donation Link
+- "Support this project" link in footer
+- Points to `https://buymeacoffee.com/toolshed` (update URL when account created)
 
 ## How to Add a New Tool
 
@@ -44,6 +64,8 @@ The project is fully functional with 7 client-side developer tools. Build passes
 - `src/lib/categories.ts` - Category definitions (emoji, color, description)
 - `src/app/tools/[slug]/page.tsx` - Dynamic route that renders tool components
 - `src/components/tool-list.tsx` - Homepage search and filtering logic
+- `src/components/carbon-ad.tsx` - Carbon Ads integration (placeholder)
+- `src/components/site-footer.tsx` - Footer with donation link
 - `tailwind.config.ts` - Must include `src/tools/**` in content paths
 
 ## Architecture Decisions
@@ -53,21 +75,26 @@ The project is fully functional with 7 client-side developer tools. Build passes
 3. **No external deps beyond fuse.js** - All tools use native browser APIs
 4. **Narrow client boundary** - Only interactive pieces are client components
 5. **Keywords in registry** - Enables Fuse.js to match "prettify" -> JSON Formatter
+6. **No markdown library** - Custom regex-based converter for Markdown Preview
+7. **Web Crypto API** - Used for Hash Generator (SHA-1/256/512)
+8. **Monetization non-intrusive** - Ads only in sidebar, donation link subtle in footer
 
 ## Git History
 
 - `6377281` - Initial commit: ToolShed with 3 tools
-- (pending) - Add 4 new tools, UI polish, docs
+- `f4ac575` - Add 4 new tools, custom 404, UI polish, and docs
+- (pending) - Add 4 more tools, monetization, UI enhancements
 
 ## Not Yet Done
 
-- Vercel deployment
-- GitHub repo remote
-- More tools for underrepresented categories (Text, Converters, Design)
+- Vercel deployment + GitHub remote
+- Carbon Ads account signup and activation
+- Buy Me a Coffee account setup
 - Light/dark mode toggle
+- More tools for Design category
 - Favicon customization
-- Tool usage analytics
 - OpenGraph images for social sharing
+- Tool usage analytics
 
 ## Dev Commands
 
