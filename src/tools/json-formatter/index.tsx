@@ -11,25 +11,27 @@ export default function JsonFormatter() {
   const [valid, setValid] = useState<boolean | null>(null);
 
   function prettify() {
-    setValid(null);
     try {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed, null, indentSize));
       setError(null);
+      setValid(true);
     } catch (e) {
       setError((e as Error).message);
       setOutput("");
+      setValid(false);
     }
   }
 
   function minify() {
-    setValid(null);
     try {
       setOutput(JSON.stringify(JSON.parse(input)));
       setError(null);
+      setValid(true);
     } catch (e) {
       setError((e as Error).message);
       setOutput("");
+      setValid(false);
     }
   }
 
